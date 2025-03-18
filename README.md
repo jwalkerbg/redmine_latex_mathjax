@@ -12,13 +12,19 @@ Other versions are not tested but may work.
 Installation
 ------------
 1. Download archive and extract to /your/path/to/redmine/plugins/
-2. If you downloaded the zipball (https://github.com/process91/redmine_latex_mathjax/archive/master.zip), rename the extracted directory to 'redmine_latex_mathjax'
-3. (Optional) Modify init.rb. For example, if you host MathJax yourself you can point to your own MathJax location.
-4. run
+2. (Optional) Modify init.rb. For example, if you host MathJax yourself you can point to your own MathJax location.
+3. run
      cd /var/www/redmine
      bundle install --without development test --no-deployment
-5. run (currently not required) bundle exec rake redmine:plugins NAME=[plugin_name] RAILS_ENV=production
-6. Restart Redmine (e.g. by restarting Apache)
+4. Run (currently not required) bundle exec rake redmine:plugins NAME=[plugin_name] RAILS_ENV=production.
+5. Restart Redmine (e.g. by restarting Apache).
+
+Through installation, the folder `assets/redmine_latex_mathjax` should  be copied to `/public/assets`. There is a difference between Redmine versions:
+
+* Redmine < 6: `/public/plugin_assets`
+* Redmine >= 6: `public/assets/plugin_assets`
+
+If not copied at installation time, copy this folder by hand.
 
 Login to Redmine and go to Administration->Plugins. You should now see 'Redmine LaTeX MathJax Macro'. Enjoy!
 
@@ -27,10 +33,6 @@ Usage
 Anywhere on a wiki or issue page write for formulas:
 
 $mj(\sum_i x_i)$
-
-or a multiline MathJax Syntax:
-
-{{mj(P_{POWER} = \cfrac {U_{POWER}} {I_{POWER}})}}
 
 Hit 'Preview' or 'Save' to see them appear.
 
